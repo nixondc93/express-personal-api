@@ -3,13 +3,22 @@
 
 var db = require('./models');
 
-var new_campsite = {description: "Sharp rocks. Middle of nowhere."}
+// var new_campsite = {description: "Sharp rocks. Middle of nowhere."}
 
-db.Campsite.create(new_campsite, function(err, campsite){
-  if (err){
-    return console.log("Error:", err);
-  }
-
-  console.log("Created new campsite", campsite._id)
-  process.exit(); // we're all done! Exit the program.
+// db.Campsite.create(new_campsite, function(err, campsite){
+//   if (err){
+//     return console.log("Error:", err);
+//   }
+//
+//   console.log("Created new campsite", campsite._id)
+//   process.exit(); // we're all done! Exit the program.
 })
+
+var data = {
+  message: "Welcome to my personal api!",
+  documenatation: "https://github.com/nixondc93/express-personal-api/blob/master/README.md",
+  baseUrl: "https://pure-depths-90141.herokuapp.com"
+
+
+  
+}
