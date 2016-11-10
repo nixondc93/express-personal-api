@@ -12,13 +12,15 @@ var db = require('./models');
 //
 //   console.log("Created new campsite", campsite._id)
 //   process.exit(); // we're all done! Exit the program.
-})
+// })
 
 var data = {
   message: "Welcome to my personal api!",
   documenatation: "https://github.com/nixondc93/express-personal-api/blob/master/README.md",
   baseUrl: "https://pure-depths-90141.herokuapp.com"
-
-
-  
+  endpoints: [
+      method: "Get",
+      path: '/api/profile',
+      data: 'about me'
+  ]
 }
