@@ -7,4 +7,4 @@ var starWarsSchema = new Schema({
 
 var SwSpecies = mongoose.model('starWarsSpecies', starWarsSchema);
 
-module.exports = Species;
+module.exports = SwSpecies;

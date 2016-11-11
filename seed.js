@@ -19,11 +19,9 @@ var data = {
 		documenatation: "https://github.com/nixondc93/express-personal-api/blob/master/README.md",
 		baseUrl: "https://pure-depths-90141.herokuapp.com"
 		endpoints: [{
-				method: "Get",
 				path: '/api/profile',
 				data: 'about me'
 			}, {
-				method: "Get",
 				path: "/api/species",
 				data: [{
 					"name": "Hutt",

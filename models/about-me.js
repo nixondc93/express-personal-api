@@ -3,10 +3,12 @@ var mongoose = require('mongoose'),
 
 var aboutMeSchema = new Schema({
   name: String,
-  age: Number,
-  height: Number,
-  hobbies: Array,
-  location: String
+	githubLink: String,
+	githubProfileImage: String,
+	personalSiteLink: String,
+	currentCity: String,
+	bornInCity: String,
+  hobbies: []
 });
 
 var aboutMe = mongoose.model('aboutMe', AuthorSchema);
