@@ -11,6 +11,6 @@ var aboutMeSchema = new Schema({
   hobbies: []
 });
 
-var aboutMe = mongoose.model('aboutMe', AuthorSchema);
+var aboutMe = mongoose.model('aboutMe', aboutMeSchema);
 
 module.exports = aboutMe;

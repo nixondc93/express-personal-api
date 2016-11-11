@@ -27,7 +27,7 @@ var db = require('./models');
 
 
 
- 
+
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
@@ -55,15 +55,15 @@ app.get('/api', function api_index(req, res) {
 		baseUrl: "https://pure-depths-90141.herokuapp.com", // CHANGE ME
     endpoints: [
       {method: "GET", path: "/api", description: "Displays all endpoints"},
-      {method: "GET", path: "/api/profile", description: "About me endpoint"},
-      {method: "GET", path: "", description: "Displays all the items in my wishlist"},
-      {method: "GET", path: "", description: "Gets a single item from my wishlist"},
-      {method: "POST", path: "", description: "Creates a new item for my wishlist"},
-      {method: "PUT", path: "", description: "Updates a single item in my wishlist"},
-      {method: "DELETE", path: "", description: "Deletes a single item in my wishlist"}
+      {method: "GET", path: "/api/profile", description: "Info about me endpoint"},
+      {method: "GET", path: "", description: "Displays all Starwars species"},
+      {method: "GET", path: "", description: "Gets a single Starwars Species"},
+      {method: "POST", path: "", description: "Creates a new Species"},
+      {method: "PUT", path: "", description: "Updates a Species"},
+      {method: "DELETE", path: "", description: "Deletes a Species"}
     ]
 
-  })
+  });
 });
 
 /**********
