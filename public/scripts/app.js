@@ -60,22 +60,27 @@ getAboutMe();
 getSwSpecies();
 
 
-$('.deleteBtn').click(function(e){
-  alert('hello')
-    var id = $(this).attr('data-id')
-    console.log(id);
-    console.log(this);
-  $.ajax({
-    method: 'Delete',
-    url: '/api/swspecies/' + $(this).attr('data-id'),
-    success: speciesSucc,
-    error: handleError
-  });
-  function speciesSucc(){
-    getSwSpecies();
-    console.log('deleted');
-  }
+
+$('.btn').click(function(e){
+  alert('hello');
 });
+
+// $('.deleteBtn').click(function(e){
+//   alert('hello')
+//     var id = $(this).attr('data-id')
+//     console.log(id);
+//     console.log(this);
+//   $.ajax({
+//     method: 'Delete',
+//     url: '/api/swspecies/' + $(this).attr('data-id'),
+//     success: speciesSucc,
+//     error: handleError
+//   });
+//   function speciesSucc(){
+//     getSwSpecies();
+//     console.log('deleted');
+//   }
+// });
 
 
 
