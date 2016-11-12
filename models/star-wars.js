@@ -2,9 +2,10 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var starWarsSchema = new Schema({
-  name: String
+  path: String,
+  data: Array
 });
 
-var SwSpecies = mongoose.model('starWarsSpecies', starWarsSchema);
+var SwSpecies = mongoose.model('SwSpecies', starWarsSchema);
 
 module.exports = SwSpecies;

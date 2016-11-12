@@ -2,15 +2,16 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var aboutMeSchema = new Schema({
+  path: String, 
   name: String,
 	githubLink: String,
 	githubProfileImage: String,
 	personalSiteLink: String,
 	currentCity: String,
 	bornInCity: String,
-  hobbies: []
+  hobbies: Array
 });
 
-var aboutMe = mongoose.model('aboutMe', aboutMeSchema);
+var AboutMe = mongoose.model('aboutMe', aboutMeSchema);
 
-module.exports = aboutMe;
+module.exports = AboutMe;

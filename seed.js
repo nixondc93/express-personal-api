@@ -3,25 +3,18 @@
 
 var db = require('./models');
 
-// var new_campsite = {description: "Sharp rocks. Middle of nowhere."}
+var aboutMe = {
+  path: '/api/aboutme',
+  name: "Derry Nixon",
+	githubLink:'https://github.com/nixondc93',
+	githubProfileImage: 'https://avatars3.githubusercontent.com/u/17390689?v=3&s=460',
+	personalSiteLink:"https://nixondc93.github.io/",
+	currentCity: 'San Francisco',
+	bornInCity: 'Boone',
+  hobbies: ['soccer','hiking','kayaking', 'traveling', 'fishing']
+}
 
-// db.Campsite.create(new_campsite, function(err, campsite){
-//   if (err){
-//     return console.log("Error:", err);
-//   }
-//
-//   console.log("Created new campsite", campsite._id)
-//   process.exit(); // we're all done! Exit the program.
-// })
-
-var data = {
-		message: "Welcome to my personal api!",
-		documenatation: "https://github.com/nixondc93/express-personal-api/blob/master/README.md",
-		baseUrl: "https://pure-depths-90141.herokuapp.com"
-		endpoints: [{
-				path: '/api/profile',
-				data: 'about me'
-			}, {
+var species = {
 				path: "/api/species",
 				data: [{
 					"name": "Hutt",
@@ -40,10 +33,7 @@ var data = {
 					"films": [
 						"http://swapi.co/api/films/3/",
 						"http://swapi.co/api/films/1/"
-					],
-					"created": "2014-12-10T17:12:50.410000Z",
-					"edited": "2014-12-20T21:36:42.146000Z",
-					"url": "http://swapi.co/api/species/5/"
+					]
 				}, {
 					"name": "Yoda's species",
 					"classification": "mammal",
@@ -64,10 +54,7 @@ var data = {
 						"http://swapi.co/api/films/6/",
 						"http://swapi.co/api/films/3/",
 						"http://swapi.co/api/films/2/"
-					],
-					"created": "2014-12-15T12:27:22.877000Z",
-					"edited": "2014-12-20T21:36:42.148000Z",
-					"url": "http://swapi.co/api/species/6/"
+					]
 				}, {
 					"name": "Trandoshan",
 					"classification": "reptile",
@@ -84,10 +71,7 @@ var data = {
 					],
 					"films": [
 						"http://swapi.co/api/films/2/"
-					],
-					"created": "2014-12-15T13:07:47.704000Z",
-					"edited": "2014-12-20T21:36:42.151000Z",
-					"url": "http://swapi.co/api/species/7/"
+					]
 				}, {
 					"name": "Mon Calamari",
 					"classification": "amphibian",
@@ -104,10 +88,7 @@ var data = {
 					],
 					"films": [
 						"http://swapi.co/api/films/3/"
-					],
-					"created": "2014-12-18T11:09:52.263000Z",
-					"edited": "2014-12-20T21:36:42.153000Z",
-					"url": "http://swapi.co/api/species/8/"
+					]
 				}, {
 					"name": "Ewok",
 					"classification": "mammal",
@@ -124,10 +105,7 @@ var data = {
 					],
 					"films": [
 						"http://swapi.co/api/films/3/"
-					],
-					"created": "2014-12-18T11:22:00.285000Z",
-					"edited": "2014-12-20T21:36:42.155000Z",
-					"url": "http://swapi.co/api/species/9/"
+					]
 				}, {
 					"name": "Sullustan",
 					"classification": "mammal",
@@ -144,11 +122,8 @@ var data = {
 					],
 					"films": [
 						"http://swapi.co/api/films/3/"
-					],
-					"created": "2014-12-18T11:26:20.103000Z",
-					"edited": "2014-12-20T21:36:42.157000Z",
-					"url": "http://swapi.co/api/species/10/"
-				}, {
+					]
+        	}, {
 					"name": "Neimodian",
 					"classification": "unknown",
 					"designation": "sentient",
@@ -164,10 +139,7 @@ var data = {
 					],
 					"films": [
 						"http://swapi.co/api/films/4/"
-					],
-					"created": "2014-12-19T17:07:31.319000Z",
-					"edited": "2014-12-20T21:36:42.160000Z",
-					"url": "http://swapi.co/api/species/11/"
+					]
 				}, {
 					"name": "Gungan",
 					"classification": "amphibian",
@@ -188,9 +160,6 @@ var data = {
 						"http://swapi.co/api/films/5/",
 						"http://swapi.co/api/films/4/"
 					],
-					"created": "2014-12-19T17:30:37.341000Z",
-					"edited": "2014-12-20T21:36:42.163000Z",
-					"url": "http://swapi.co/api/species/12/"
 				}, {
 					"name": "Toydarian",
 					"classification": "mammal",
@@ -208,10 +177,7 @@ var data = {
 					"films": [
 						"http://swapi.co/api/films/5/",
 						"http://swapi.co/api/films/4/"
-					],
-					"created": "2014-12-19T17:48:56.893000Z",
-					"edited": "2014-12-20T21:36:42.165000Z",
-					"url": "http://swapi.co/api/species/13/"
+					]
 				}, {
 					"name": "Dug",
 					"classification": "mammal",
@@ -228,13 +194,39 @@ var data = {
 					],
 					"films": [
 						"http://swapi.co/api/films/4/"
-					],
-					"created": "2014-12-19T17:53:11.214000Z",
-					"edited": "2014-12-20T21:36:42.167000Z",
-					"url": "http://swapi.co/api/species/14/"
+					]
 				}]
 			}
 
 
 
-		}
+
+      db.AboutMe.remove({}, function(err, succ) {
+        if (err) {
+          console.error(err);
+        }
+        db.AboutMe.create(aboutMe, function(err, succ){
+          if (err) {
+            console.log(err);
+          }
+        });
+      });
+
+      db.SwSpecies.remove({}, function(err, succ) {
+        db.SwSpecies.create(species, function(err, succ){
+          if (err) {
+            console.log(err);
+          }
+        });
+      });
+      // db.AboutMe.remove({}, function(err, aboutme) {
+      //   if(err) {
+      //     console.log('Error occurred in remove', err);
+      //   } else {
+      //     console.log('Removed profile');
+      //     db.AboutMe.create(aboutMe, function(err, aboutme) {
+      //       if (err) { return console.log('err', err); }
+      //       console.log('Created profile ' + aboutMe);
+      //     });
+      //   }
+      // });

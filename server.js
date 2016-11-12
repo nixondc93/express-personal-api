@@ -52,10 +52,10 @@ app.get('/api', function api_index(req, res) {
     woopsIForgotToDocumentAllMyEndpoints: false,
     message: "Welcome to my personal api! Here's what you need to know!",
     documenatation: "https://github.com/nixondc93/express-personal-api/blob/master/README.md",
-		baseUrl: "https://pure-depths-90141.herokuapp.com", // CHANGE ME
+		baseUrl: "https://pure-depths-90141.herokuapp.com",
     endpoints: [
       {method: "GET", path: "/api", description: "Displays all endpoints"},
-      {method: "GET", path: "/api/profile", description: "Info about me endpoint"},
+      {method: "GET", path: "/api/aboutme", description: "Info about me endpoint"},
       {method: "GET", path: "", description: "Displays all Starwars species"},
       {method: "GET", path: "", description: "Gets a single Starwars Species"},
       {method: "POST", path: "", description: "Creates a new Species"},
@@ -65,6 +65,33 @@ app.get('/api', function api_index(req, res) {
 
   });
 });
+
+
+
+app.get('/api/aboutme', function(req, res) {
+  db.AboutMe.find(function(err, aboutme){
+    if (err) {
+      return console.log(err);
+    }
+    res.json(aboutme);
+  });
+});
+
+app.get('/api/swspecies', function(req, res) {
+  db.SwSpecies.find(function(err, species){
+    if (err) {
+      return console.log(err);
+    }
+    res.json(species);
+  });
+});
+
+// app.get('api/swspecies', function api_index() {
+//
+// })
+
+
+
 
 /**********
  * SERVER *
