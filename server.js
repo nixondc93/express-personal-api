@@ -56,8 +56,8 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Displays all endpoints"},
       {method: "GET", path: "/api/aboutme", description: "Info about me endpoint"},
-      {method: "GET", path: "", description: "Displays all Starwars species"},
-      {method: "GET", path: "", description: "Gets a single Starwars Species"},
+      {method: "GET", path: "/api/swspecies", description: "Displays all Starwars species"},
+      {method: "GET", path: "/api/swspecies/:id", description: "Gets a single Starwars Species"},
       {method: "POST", path: "", description: "Creates a new Species"},
       {method: "PUT", path: "", description: "Updates a Species"},
       {method: "DELETE", path: "", description: "Deletes a Species"}
@@ -86,9 +86,19 @@ app.get('/api/swspecies', function(req, res) {
   });
 });
 
-// app.get('api/swspecies', function api_index() {
-//
-// })
+app.get('/api/swspecies/:id', function(req, res) {
+  db.SwSpecies.findOne({_id: req.params.id} ,function(err, species){
+    if (err) {
+      return console.log(err);
+    }
+    res.json(species);
+  });
+});
+
+
+
+
+
 
 
 

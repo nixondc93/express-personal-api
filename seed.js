@@ -14,9 +14,8 @@ var aboutMe = {
   hobbies: ['soccer','hiking','kayaking', 'traveling', 'fishing']
 }
 
-var species = {
-				path: "/api/species",
-				data: [{
+var species =  [
+    {
 					"name": "Hutt",
 					"classification": "gastropod",
 					"designation": "sentient",
@@ -196,7 +195,7 @@ var species = {
 						"http://swapi.co/api/films/4/"
 					]
 				}]
-			}
+			
 
 
 
