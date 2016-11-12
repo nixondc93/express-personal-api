@@ -24,14 +24,15 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h1>Welcome to My API!</h1>
+                <hr>
                 <h4><a href="/api">Read My API Documentation</a></h4>
             </div>
 
-            <hr>
+
 
             <!--about me  -->
             <div class="row col-md-8 col-md-offset-2 aboutme-target">
-              <h2>My Profile:</h2><br>
+                <h2>My Profile:</h2><br>
 
                 <script id="aboutme-template" type="text/x-handlebars-template">
                     <div class="col-md-3 species-objs">
@@ -41,29 +42,23 @@
                         <p><b>My Personal Site: </b><a href='{{personalSiteLink}}'>{{personalSiteLink}}</a></p>
                         <p><b>My Birthplace: </b>{{bornInCity}}</p>
                         <p><b>My Current Location:</b> {{currentCity}}</p>
-                        <p><b>My Hobbies: </b> {{#each hobbies}}
-                          {{this}},
-                        {{/each}}
+                        <p><b>My Hobbies: </b> {{#each hobbies}} {{this}}, {{/each}}
                         </p>
-
-
                     </div>
-
-
-
-
                 </script>
             </div>
+        </div>
+        <hr>
 
-            <hr>
+        <!-- Species list -->
+        <div class="row">
 
-            <!-- Species list -->
-            <h2>Starwars Species</h2>
-            <div class=" row col-md-8 col-md-offset-2 species-target">
-                <script id="species-template" type="text/x-handlebars-template">
-                    {{#each swspecies}}
-                    <div class="col-md-3 species-objs">
-                      <!-- <h2> {{this}} </h2> -->
+        <div class="col-md-8 col-md-offset-2 species-target">
+          <h2>Starwars Species</h2>
+            <script id="species-template" type="text/x-handlebars-template">
+                {{#each swspecies}}
+                  <div class="col-md-3 species-objs">
+                      <hr>
                       <p><b>Name: </b>{{name}}</p>
                       <p><b>Classification: </b>{{this.classification}}</p>
                       <p><b>designation: </b>{{this.designation}}</p>
@@ -73,12 +68,47 @@
                       <p><b>Eye Colors: </b>{{eye_colors}}</p>
                       <p><b>Average Lifespan: </b>{{average_lifespan}}</p>
                       <p><b>Language: </b>{{language}}</p>
-                    </div>
-                    {{/each}}
-                </script>
-            </div>
+                      <input class="deleteBtn btn btn-danger" data-id={{_id}} type="submit" value="Delete"></input>
+                      <input class="updateBtn btn" data-id={{_id}} type="submit" value="Update"></input>
+                  </div>
+                {{/each}}
+            </script>
         </div>
     </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <hr>
+        <form method="POST" action="/api/wishlist" id="add-items">
+         <h2>Add a Species</h2>
+            <div class="row form">
+
+              <p><b>Species Name: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
+
+              <p><b>Classification: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
+
+              <p><b>Designation: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
+
+              <p><b>Average Height: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
+
+              <p><b>Skin Color: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
+
+              <p><b>Eye Color: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
+
+              <p><b>Average Lifepan: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
+
+              <p><b>Species Name: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
+
+              <p><b>Language: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
+
+             <input class="btn btn-default submitBtn" type="submit"></input>
+            </div>
+    </form>
+      </div>
+
+
+    </div>
+
+  </div>
 </body>
 
 </html>

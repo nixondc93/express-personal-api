@@ -31,7 +31,9 @@ function getAboutMe(){
   }
 }
 
-
+//////////////////////
+//getting species data
+//////////////////////
 
 function getSwSpecies(){
   speciesSource = $('#species-template').html();
@@ -50,17 +52,34 @@ function getSwSpecies(){
 
   function speciesSucc(json) {
     var allSpecies = speciesTemplate({swspecies: json});
-    $('.aboutme-target').append(allSpecies);
+    $('.species-target').append(allSpecies);
   }
 }
 
-
-
-
-
-
-
-
 getAboutMe();
 getSwSpecies();
+
+
+$('.deleteBtn').click(function(e){
+  alert('hello')
+    var id = $(this).attr('data-id')
+    console.log(id);
+    console.log(this);
+  $.ajax({
+    method: 'Delete',
+    url: '/api/swspecies/' + $(this).attr('data-id'),
+    success: speciesSucc,
+    error: handleError
+  });
+  function speciesSucc(){
+    getSwSpecies();
+    console.log('deleted');
+  }
+});
+
+
+
+
+
+
 });
