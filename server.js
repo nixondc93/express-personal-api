@@ -67,7 +67,7 @@ app.get('/api', function api_index(req, res) {
 });
 
 
-
+//get my profile
 app.get('/api/aboutme', function(req, res) {
   db.AboutMe.find(function(err, aboutme){
     if (err) {
@@ -76,7 +76,7 @@ app.get('/api/aboutme', function(req, res) {
     res.json(aboutme);
   });
 });
-
+//get all species
 app.get('/api/swspecies', function(req, res) {
   db.SwSpecies.find(function(err, species){
     if (err) {
@@ -86,6 +86,7 @@ app.get('/api/swspecies', function(req, res) {
   });
 });
 
+//get one species
 app.get('/api/swspecies/:id', function(req, res) {
   db.SwSpecies.findOne({_id: req.params.id} ,function(err, species){
     if (err) {
@@ -95,10 +96,36 @@ app.get('/api/swspecies/:id', function(req, res) {
   });
 });
 
+//create new species
+app.post('/api/swspecies', function(req, res){
+  var new_species = db.SwSpecies.create(req.body)
+  res.json(new_species);
+});
 
+//update species
+app.put('/api/wishlist/:id', function(req, res){
+  db.SwSpecies.findOne({_id: reqparams.id}, function(err, species){
+    species.name = req.body.name;
+    species.classification = req.body.classification;
+    species.designation = req.body.designation;
+    spcecies.average_height = req.body.average_height;
+    species.skin_colors = req.body.skin_colors;
+    species.hair_colors = req.body.hair_colors;
+    species.eye_colors = req.body.eye_colors;
+    species.average_lifespan = req.body.average_lifespan;
+    species.language = req.body.language;
+    species.save(function(err, updated_species){
+    res.json(updated_species);
+    });
+  });
+});
 
-
-
+// delete species
+app.delete('/api/swspecies/:id', function(req, res){
+  db.SwSpecies.findOneAndRemove({id: req.params.id}, function(err, species){
+      res.json(species);
+  });
+});
 
 
 

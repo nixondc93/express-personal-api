@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>My API</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -16,15 +17,68 @@
 
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Welcome to My API!</h1>
+                <h4><a href="/api">Read My API Documentation</a></h4>
+            </div>
+
+            <hr>
+
+            <!--about me  -->
+            <div class="row col-md-8 col-md-offset-2 aboutme-target">
+              <h2>My Profile:</h2><br>
+
+                <script id="aboutme-template" type="text/x-handlebars-template">
+                    <div class="col-md-3 species-objs">
+                        <p><img src="{{githubProfileImage}}" class="github-profile"></p>
+                        <p><b>Name: </b>{{name}}</p>
+                        <p><b>Github Profile: </b><a href='{{githubLink}}'>{{githubLink}}</a></p>
+                        <p><b>My Personal Site: </b><a href='{{personalSiteLink}}'>{{personalSiteLink}}</a></p>
+                        <p><b>My Birthplace: </b>{{bornInCity}}</p>
+                        <p><b>My Current Location:</b> {{currentCity}}</p>
+                        <p><b>My Hobbies: </b> {{#each hobbies}}
+                          {{this}},
+                        {{/each}}
+                        </p>
+
+
+                    </div>
+
+
+
+
+                </script>
+            </div>
+
+            <hr>
+
+            <!-- Species list -->
+            <h2>Starwars Species</h2>
+            <div class=" row col-md-8 col-md-offset-2 species-target">
+                <script id="species-template" type="text/x-handlebars-template">
+                    {{#each swspecies}}
+                    <div class="col-md-3 species-objs">
+                      <!-- <h2> {{this}} </h2> -->
+                      <p><b>Name: </b>{{name}}</p>
+                      <p><b>Classification: </b>{{this.classification}}</p>
+                      <p><b>designation: </b>{{this.designation}}</p>
+                      <p><b>Average Height: </b>{{average_height}}</p>
+                      <p><b>Skin Color: </b>{{skin_colors}}</p>
+                      <p><b>Hair Color: </b>{{hair_colors}}</p>
+                      <p><b>Eye Colors: </b>{{eye_colors}}</p>
+                      <p><b>Average Lifespan: </b>{{average_lifespan}}</p>
+                      <p><b>Language: </b>{{language}}</p>
+                    </div>
+                    {{/each}}
+                </script>
+            </div>
         </div>
-      </div>
     </div>
-  </body>
+</body>
+
 </html>

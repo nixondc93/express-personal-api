@@ -9,8 +9,8 @@ var aboutMe = {
 	githubLink:'https://github.com/nixondc93',
 	githubProfileImage: 'https://avatars3.githubusercontent.com/u/17390689?v=3&s=460',
 	personalSiteLink:"https://nixondc93.github.io/",
-	currentCity: 'San Francisco',
-	bornInCity: 'Boone',
+	currentCity: 'San Francisco, CA',
+	bornInCity: 'Boone, NC',
   hobbies: ['soccer','hiking','kayaking', 'traveling', 'fishing']
 }
 
@@ -195,7 +195,7 @@ var species =  [
 						"http://swapi.co/api/films/4/"
 					]
 				}]
-			
+
 
 
 
