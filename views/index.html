@@ -58,28 +58,32 @@
                     {{#each swspecies}}
                     <div class="col-md-3 species-objs form">
                         <hr>
-                        <form class="update" method="PUT" action="/api/swspecies">
-                        <p><b>Name: </b>{{name}}</p>
-                        <p class=""><input class="hidden" type="text" name="name" value="{{name}}"></p>
-                        <p><b>Classification: </b>{{classification}}</p>
-                        <p class=""><input class="hidden" type="text" name="classification" value="{{classification}}"></p>
-                        <p><b>designation: </b>{{designation}}</p>
-                        <p class=""><input class="hidden" type="text" name="designation" value="{{designation}}"></p>
-                        <p><b>Average Height: </b>{{average_height}}</p>
-                        <p class=""><input class="hidden" type="text" name="average_height" value="{{average_height}}"></p>
-                        <p><b>Skin Color: </b>{{skin_colors}}</p>
-                        <p class=""><input class="hidden" type="text" name="skin_colors" value="{{skin_colors}}"></p>
-                        <p><b>Hair Color: </b>{{hair_colors}}</p>
-                        <p class=""><input class="hidden" type="text" name="hair_colors" value="{{hair_colors}}"></p>
-                        <p><b>Eye Colors: </b>{{eye_colors}}</p>
-                        <p class=""><input class="hidden" type="text" name="eye_colors" value="{{eye_colors}}"></p>
-                        <p><b>Average Lifespan: </b>{{average_lifespan}}</p>
-                        <p class=""><input class="hidden" type="text" name="average_lifespan" value="{{average_lifespan}}"></p>
-                        <p><b>Language: </b>{{language}}</p>
-                        <p class=""><input class="hidden" type="text" name="language" value="{{language}}"></p>
+                        <form id="speciesUpdate" method="PUT" action="/api/swspecies">
+                        <p class="display"><b>Name: </b>{{name}}</p>
+                        <p><input class="hidden update-form" type="text" name="name" value="{{name}}"></p>
+                        <p class="display"><b>Classification: </b>{{classification}}</p>
+                        <p><input class="hidden update-form" type="text" name="classification" value="{{classification}}"></p>
+                        <p class="display"><b>designation: </b>{{designation}}</p>
+                        <p><input class="hidden update-form" type="text" name="designation" value="{{designation}}"></p>
+                        <p class="display"><b>Average Height: </b>{{average_height}}</p>
+                        <p><input class="hidden update-form" type="text" name="average_height" value="{{average_height}}"></p>
+                        <p class="display"><b>Skin Color: </b>{{skin_colors}}</p>
+                        <p><input class="hidden update-form" type="text" name="skin_colors" value="{{skin_colors}}"></p>
+                        <p class="display"><b>Hair Color: </b>{{hair_colors}}</p>
+                        <p><input class="hidden update-form" type="text" name="hair_colors" value="{{hair_colors}}"></p>
+                        <p class="display"><b>Eye Colors: </b>{{eye_colors}}</p>
+                        <p><input class="hidden update-form" type="text" name="eye_colors" value="{{eye_colors}}"></p>
+                        <p class="display"><b>Average Lifespan: </b>{{average_lifespan}}</p>
+                        <p><input class="hidden update-form" type="text" name="average_lifespan" value="{{average_lifespan}}"></p>
+                        <p class="display"><b>Language: </b>{{language}}</p>
+                        <p><input class="hidden update-form" type="text" name="language" value="{{language}}"></p>
                         <button class="deleteBtn btn btn-danger" data-id={{_id}}>Delete</button>
-                        <button class="updateBtn btn" data-id={{_id}}>Update</button>
-                      </form>
+                        <input type='submit' class="saveBtn hidden btn" data-id={{_id}} value="Save"></button>
+                        <button type="button" class="updateBtn display btn btn-primary" data-id={{_id}}>Update</button>
+                        </form>
+
+
+
                     </div>
                     {{/each}}
                 </script>

@@ -36,15 +36,6 @@ function getAboutMe(){
 //getting species data
 //////////////////////
 
-// function render() {
-//     $wishlist.empty();
-//     var html = wishlistTemplate({
-//         wishlist: allItems
-//     });
-//     $wishlist.append(html);
-// };
-
-
 
 speciesSource = $('#species-template').html();
 speciesTemplate = hb.compile(speciesSource);
@@ -61,7 +52,6 @@ function render() {
 
 function getSwSpecies(){
 
-
   $.ajax({
     method: 'GET',
     url: '/api/swspecies',
@@ -74,9 +64,7 @@ function getSwSpecies(){
   }
 
   function speciesSucc(json) {
-
       speciesData = json;
-      console.log(speciesData)
       render();
   }
 }
@@ -87,7 +75,7 @@ getSwSpecies();
 
 
 $('.species-target').on('click', '.deleteBtn',function(e){
-
+  e.preventDefault();
     var id = $(this).attr('data-id');
     console.log(id);
   $.ajax({
@@ -137,17 +125,17 @@ $('#add-items').on('submit', function(e) {
 
     }
 
-// $('.update').on('submit', function(e){
-  // e.preventDefault();
-//   $('.update > input').removeClass('hidden');
-  // $.ajax({
-//     method: 'PUT',
-//     url: '/api/swspecies',
-//     data: $(this).serialize(),
-//     success: putSuccess,
-//     error: handleError
-//   });
-// });
+$('.species-target').on('click', '.updateBtn',function(e){
+  var display = $('.display');
+
+
+  $(this).parent().find(display).toggle(); 
+  $(this).parent().find("input").removeClass('hidden');
+
+
+
+});
+
 
 
 
