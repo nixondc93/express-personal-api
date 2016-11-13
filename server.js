@@ -98,17 +98,17 @@ app.get('/api/swspecies/:id', function(req, res) {
 
 //create new species
 app.post('/api/swspecies', function(req, res){
-  var new_species = db.SwSpecies.create(req.body)
-  res.json(new_species);
+  console.log(req.body);
+  res.json(db.SwSpecies.create(req.body));
 });
 
 //update species
 app.put('/api/wishlist/:id', function(req, res){
-  db.SwSpecies.findOne({_id: reqparams.id}, function(err, species){
+  db.SwSpecies.findOne({_id: req.params.id}, function(err, species){
     species.name = req.body.name;
     species.classification = req.body.classification;
     species.designation = req.body.designation;
-    spcecies.average_height = req.body.average_height;
+    species.average_height = req.body.average_height;
     species.skin_colors = req.body.skin_colors;
     species.hair_colors = req.body.hair_colors;
     species.eye_colors = req.body.eye_colors;
@@ -122,7 +122,9 @@ app.put('/api/wishlist/:id', function(req, res){
 
 // delete species
 app.delete('/api/swspecies/:id', function(req, res){
-  db.SwSpecies.findOneAndRemove({id: req.params.id}, function(err, species){
+    id = req.params.id
+  db.SwSpecies.findOneAndRemove({_id: id}, function(err, species){
+      console.log('deleted');
       res.json(species);
   });
 });

@@ -2,12 +2,13 @@ console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
 
-var $species,
-  aboutMeSource,
-  speciesSource,
-  aboutMeTemplate,
-  speciesTemplate;
+var aboutMeSource,
+    speciesSource,
+    aboutMeTemplate,
+    speciesTemplate,
+    speciesHtml;
 
+var speciesData = [];
 var hb = Handlebars;
 
 //////////////////////
@@ -35,9 +36,31 @@ function getAboutMe(){
 //getting species data
 //////////////////////
 
+// function render() {
+//     $wishlist.empty();
+//     var html = wishlistTemplate({
+//         wishlist: allItems
+//     });
+//     $wishlist.append(html);
+// };
+
+
+
+speciesSource = $('#species-template').html();
+speciesTemplate = hb.compile(speciesSource);
+
+
+function render() {
+  $('.species-target').empty();
+  speciesHtml = speciesTemplate({swspecies: speciesData});
+  $('.species-target').append(speciesHtml);
+
+
+}
+
+
 function getSwSpecies(){
-  speciesSource = $('#species-template').html();
-  speciesTemplate = hb.compile(speciesSource);
+
 
   $.ajax({
     method: 'GET',
@@ -51,8 +74,10 @@ function getSwSpecies(){
   }
 
   function speciesSucc(json) {
-    var allSpecies = speciesTemplate({swspecies: json});
-    $('.species-target').append(allSpecies);
+
+      speciesData = json;
+      console.log(speciesData)
+      render();
   }
 }
 
@@ -61,30 +86,56 @@ getSwSpecies();
 
 
 
-$('.btn').click(function(e){
-  alert('hello');
+$('.species-target').on('click', '.deleteBtn',function(e){
+
+    var id = $(this).attr('data-id');
+    console.log(id);
+  $.ajax({
+    method: 'Delete',
+    url: '/api/swspecies/' + id,
+    success: deleteSucc,
+    error: handleError
+  });
+  function handleError(error){
+    console.error(error);
+  }
+  function deleteSucc(json){
+  var deleted = json;
+  var id = deleted._id;
+
+  for(var i = 0; i < speciesData.length; i++) {
+    if(speciesData[i]._id === id) {
+      speciesData.splice(i, 1);
+      break;
+    }
+  }
+  render();
+}
+
 });
 
-// $('.deleteBtn').click(function(e){
-//   alert('hello')
-//     var id = $(this).attr('data-id')
-//     console.log(id);
-//     console.log(this);
-//   $.ajax({
-//     method: 'Delete',
-//     url: '/api/swspecies/' + $(this).attr('data-id'),
-//     success: speciesSucc,
-//     error: handleError
-//   });
-//   function speciesSucc(){
-//     getSwSpecies();
-//     console.log('deleted');
-//   }
-// });
 
+$('#add-items').on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+          method: 'POST',
+          url: '/api/swspecies',
+          data: $(this).serialize(),
+          success: postSuccess,
+          error: handleError
+        });
+        console.log(this);
+    });
+    function handleError(error){
+      console.error(error);
+    }
+    function postSuccess(json){
+      $('.clear').val('');
+      console.log(json);
+      speciesData.push(json)
+      render();
 
-
-
+    }
 
 
 });

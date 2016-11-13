@@ -218,14 +218,3 @@ var species =  [
           }
         });
       });
-      // db.AboutMe.remove({}, function(err, aboutme) {
-      //   if(err) {
-      //     console.log('Error occurred in remove', err);
-      //   } else {
-      //     console.log('Removed profile');
-      //     db.AboutMe.create(aboutMe, function(err, aboutme) {
-      //       if (err) { return console.log('err', err); }
-      //       console.log('Created profile ' + aboutMe);
-      //     });
-      //   }
-      // });

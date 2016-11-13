@@ -52,63 +52,59 @@
 
         <!-- Species list -->
         <div class="row">
+            <h2>Starwars Species</h2>
+            <div class="col-md-8 col-md-offset-2 species-target">
+                <script id="species-template" type="text/x-handlebars-template">
+                    {{#each swspecies}}
+                    <div class="col-md-3 species-objs">
+                        <hr>
+                        <p><b>Name: </b>{{name}}</p>
+                        <p><b>Classification: </b>{{classification}}</p>
+                        <p><b>designation: </b>{{designation}}</p>
+                        <p><b>Average Height: </b>{{average_height}}</p>
+                        <p><b>Skin Color: </b>{{skin_colors}}</p>
+                        <p><b>Hair Color: </b>{{hair_colors}}</p>
+                        <p><b>Eye Colors: </b>{{eye_colors}}</p>
+                        <p><b>Average Lifespan: </b>{{average_lifespan}}</p>
+                        <p><b>Language: </b>{{language}}</p>
+                        <button class="deleteBtn btn btn-danger" data-id={{_id}}>Delete</button>
+                        <button class="updateBtn btn" data-id={{_id}}>Update</button>
+                    </div>
+                    {{/each}}
+                </script>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <hr>
+                <form method="POST" action="/api/wishlist" id="add-items">
+                    <h2>Add a Species</h2>
+                    <div class="row form">
 
-        <div class="col-md-8 col-md-offset-2 species-target">
-          <h2>Starwars Species</h2>
-            <script id="species-template" type="text/x-handlebars-template">
-                {{#each swspecies}}
-                  <div class="col-md-3 species-objs">
-                      <hr>
-                      <p><b>Name: </b>{{name}}</p>
-                      <p><b>Classification: </b>{{this.classification}}</p>
-                      <p><b>designation: </b>{{this.designation}}</p>
-                      <p><b>Average Height: </b>{{average_height}}</p>
-                      <p><b>Skin Color: </b>{{skin_colors}}</p>
-                      <p><b>Hair Color: </b>{{hair_colors}}</p>
-                      <p><b>Eye Colors: </b>{{eye_colors}}</p>
-                      <p><b>Average Lifespan: </b>{{average_lifespan}}</p>
-                      <p><b>Language: </b>{{language}}</p>
-                      <input class="deleteBtn btn btn-danger" data-id={{_id}} type="submit" value="Delete"></input>
-                      <input class="updateBtn btn" data-id={{_id}} type="submit" value="Update"></input>
-                  </div>
-                {{/each}}
-            </script>
+                        <p><b>Species Name: </b> <input class="clear" name="name" type="text" placeholder="Species Name" required></p>
+
+                        <p><b>Classification: </b> <input class="clear" name="classification" type="text" placeholder="Classification" ></p>
+
+                        <p><b>Designation: </b> <input class="clear" name="designation" type="text" placeholder="Designation" ></p>
+
+                        <p><b>Average Height: </b> <input class="clear" name="average_height" type="text" placeholder="Average Height" ></p>
+
+                        <p><b>Skin Color: </b> <input class="clear" name="skin_colors" type="text" placeholder="Skin Color" ></p>
+
+                        <p><b>Hair Color: </b> <input class="clear" name="hair_colors" type="text" placeholder="Hair Color" ></p>
+
+                        <p><b>Eye Color: </b> <input class="clear" name="eye_colors" type="text" placeholder="Eye Color" ></p>
+
+                        <p><b>Average Lifepan: </b> <input class="clear" name="average_lifespan" type="text" placeholder="Average Lifespan" ></p>
+
+                        <p><b>Language: </b> <input class="clear" name="language" type="text" placeholder="Language" ></p>
+
+                        <input class="btn btn-default submitBtn" type="submit"></input>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <hr>
-        <form method="POST" action="/api/wishlist" id="add-items">
-         <h2>Add a Species</h2>
-            <div class="row form">
-
-              <p><b>Species Name: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
-
-              <p><b>Classification: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
-
-              <p><b>Designation: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
-
-              <p><b>Average Height: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
-
-              <p><b>Skin Color: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
-
-              <p><b>Eye Color: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
-
-              <p><b>Average Lifepan: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
-
-              <p><b>Species Name: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
-
-              <p><b>Language: </b>  <input class="clear" name="speciesName" type="text" placeholder="Species Name"required></p>
-
-             <input class="btn btn-default submitBtn" type="submit"></input>
-            </div>
-    </form>
-      </div>
-
-
-    </div>
-
-  </div>
 </body>
 
 </html>
