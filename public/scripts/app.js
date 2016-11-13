@@ -137,5 +137,19 @@ $('#add-items').on('submit', function(e) {
 
     }
 
+// $('.update').on('submit', function(e){
+  // e.preventDefault();
+//   $('.update > input').removeClass('hidden');
+  // $.ajax({
+//     method: 'PUT',
+//     url: '/api/swspecies',
+//     data: $(this).serialize(),
+//     success: putSuccess,
+//     error: handleError
+//   });
+// });
+
+
+
 
 });

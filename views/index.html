@@ -35,7 +35,7 @@
                 <h2>My Profile:</h2><br>
 
                 <script id="aboutme-template" type="text/x-handlebars-template">
-                    <div class="col-md-3 species-objs">
+                    <div class="col-md-3">
                         <p><img src="{{githubProfileImage}}" class="github-profile"></p>
                         <p><b>Name: </b>{{name}}</p>
                         <p><b>Github Profile: </b><a href='{{githubLink}}'>{{githubLink}}</a></p>
@@ -52,23 +52,34 @@
 
         <!-- Species list -->
         <div class="row">
-            <h2>Starwars Species</h2>
+            <h2 class="text-center">Starwars Species</h2>
             <div class="col-md-8 col-md-offset-2 species-target">
                 <script id="species-template" type="text/x-handlebars-template">
                     {{#each swspecies}}
-                    <div class="col-md-3 species-objs">
+                    <div class="col-md-3 species-objs form">
                         <hr>
+                        <form class="update" method="PUT" action="/api/swspecies">
                         <p><b>Name: </b>{{name}}</p>
+                        <p class=""><input class="hidden" type="text" name="name" value="{{name}}"></p>
                         <p><b>Classification: </b>{{classification}}</p>
+                        <p class=""><input class="hidden" type="text" name="classification" value="{{classification}}"></p>
                         <p><b>designation: </b>{{designation}}</p>
+                        <p class=""><input class="hidden" type="text" name="designation" value="{{designation}}"></p>
                         <p><b>Average Height: </b>{{average_height}}</p>
+                        <p class=""><input class="hidden" type="text" name="average_height" value="{{average_height}}"></p>
                         <p><b>Skin Color: </b>{{skin_colors}}</p>
+                        <p class=""><input class="hidden" type="text" name="skin_colors" value="{{skin_colors}}"></p>
                         <p><b>Hair Color: </b>{{hair_colors}}</p>
+                        <p class=""><input class="hidden" type="text" name="hair_colors" value="{{hair_colors}}"></p>
                         <p><b>Eye Colors: </b>{{eye_colors}}</p>
+                        <p class=""><input class="hidden" type="text" name="eye_colors" value="{{eye_colors}}"></p>
                         <p><b>Average Lifespan: </b>{{average_lifespan}}</p>
+                        <p class=""><input class="hidden" type="text" name="average_lifespan" value="{{average_lifespan}}"></p>
                         <p><b>Language: </b>{{language}}</p>
+                        <p class=""><input class="hidden" type="text" name="language" value="{{language}}"></p>
                         <button class="deleteBtn btn btn-danger" data-id={{_id}}>Delete</button>
                         <button class="updateBtn btn" data-id={{_id}}>Update</button>
+                      </form>
                     </div>
                     {{/each}}
                 </script>
@@ -83,7 +94,7 @@
 
                         <p><b>Species Name: </b> <input class="clear" name="name" type="text" placeholder="Species Name" required></p>
 
-                        <p><b>Classification: </b> <input class="clear" name="classification" type="text" placeholder="Classification" ></p>
+                        <p><b>Classification: </b> <input class="clear" name="classification" type="text" placeholder="Classification"></p>
 
                         <p><b>Designation: </b> <input class="clear" name="designation" type="text" placeholder="Designation" ></p>
 
