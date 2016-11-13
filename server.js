@@ -98,8 +98,11 @@ app.get('/api/swspecies/:id', function(req, res) {
 
 //create new species
 app.post('/api/swspecies', function(req, res){
-  console.log(req.body);
-  res.json(db.SwSpecies.create(req.body));
+  var species = new db.SwSpecies(req.body);
+  species.save(function(err, newspecies) {
+    res.json(newspecies);
+  })
+
 });
 
 //update species
