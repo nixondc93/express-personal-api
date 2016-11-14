@@ -112,7 +112,7 @@ $(document).ready(function() {
 	$('#add-items').on('submit', function(e) {
 		e.preventDefault();
 		$.ajax({
-			method: 'POST',
+			method: 'PUT',
 			url: '/api/swspecies',
 			data: $(this).serialize(),
 			success: postSuccess,
@@ -140,28 +140,28 @@ $(document).ready(function() {
 
 
 
-	$('#speciesUpdate').on('submit', '.saveBtn',function(e) {
+	$('.speciesUpdate').on('submit', '.saveBtn',function(e) {
 		e.preventDefault();
-
+    console.log("sanity check update");
 		var id = $(this).attr('data-id');
 		console.log(id);
 		$.ajax({
-			method: 'PUT',
+			method: 'POST',
 			url: '/api/swspecies' + id,
 			data: $(this).serialize(),
 			success: postSuccess,
 			error: handleError
 		});
+  });
     function handleError(error){
       console.error(error);
     }
 
 		function postSuccess(json) {
 			console.log(json);
+      speciesData.push(json);
+      render();
+
 		}
 
 	});
-
-
-
-});

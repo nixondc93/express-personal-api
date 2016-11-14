@@ -53,6 +53,7 @@
         <!-- Species list -->
         <div class="row">
             <h2 class="text-center">Starwars Species</h2>
+            <h2 class="text-center">Update isn't working :-(</h2>
             <div class="col-md-8 col-md-offset-2 species-target">
                 <script id="species-template" type="text/x-handlebars-template">
                     {{#each swspecies}}
@@ -78,7 +79,7 @@
                         <p class="display"><b>Language: </b>{{language}}</p>
                         <p><input class="hidden update-form" type="text" name="language" value="{{language}}"></p>
                         <button class="deleteBtn btn btn-danger" data-id={{_id}}>Delete</button>
-                        <input type="submit" class="saveBtn btn-success hidden btn" value="Save"></input>
+                        <input type="submit" class="saveBtn btn-success hidden btn" data-id="{{_id}}" value="Save"></input>
                         <button type="button" class="updateBtn display btn btn-primary">Update</button>
                         </form>
                     </div>

@@ -101,7 +101,7 @@ app.get('/api/swspecies/:id', function(req, res) {
 
 
 //create new species
-app.post('/api/swspecies', function(req, res){
+app.put('/api/swspecies', function(req, res){
   var species = new db.SwSpecies(req.body);
   species.save(function(err, newspecies) {
     res.json(newspecies);
@@ -114,7 +114,7 @@ app.post('/api/swspecies', function(req, res){
 
 
 //update species
-app.put('/api/swspecies/:_id', function(req, res){
+app.post('/api/swspecies/:_id', function(req, res){
   db.SwSpecies.findOneAndUpdate({_id: req.params._id}, function(err, species){
     console.log(species);
     console.log(species.name);
@@ -128,6 +128,9 @@ app.put('/api/swspecies/:_id', function(req, res){
     species.average_lifespan = req.body.average_lifespan;
     species.language = req.body.language;
     species.save(function(err, updated_species){
+      if(err){
+        console.log(err);
+      }
       console.log('updated');
       res.json(updated_species);
     });
