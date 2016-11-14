@@ -140,10 +140,9 @@ $(document).ready(function() {
 
 
 
-	$('.speciesUpdate').on('submit', '.saveBtn', function(e) {
-    console.log('hello');
+	$('#speciesUpdate').on('submit', '.saveBtn',function(e) {
 		e.preventDefault();
-    console.log($(this).serialize());
+
 		var id = $(this).attr('data-id');
 		console.log(id);
 		$.ajax({
