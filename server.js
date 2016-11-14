@@ -58,9 +58,9 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/aboutme", description: "Info about me endpoint"},
       {method: "GET", path: "/api/swspecies", description: "Displays all Starwars species"},
       {method: "GET", path: "/api/swspecies/:id", description: "Gets a single Starwars Species"},
-      {method: "POST", path: "", description: "Creates a new Species"},
-      {method: "PUT", path: "", description: "Updates a Species"},
-      {method: "DELETE", path: "", description: "Deletes a Species"}
+      {method: "POST", path: "/api/swspecies/:id", description: "Creates a new Species"},
+      {method: "PUT", path: "/api/swspecies/:id", description: "Updates a Species"},
+      {method: "DELETE", path: "/api/swspecies/:id", description: "Deletes a Species"}
     ]
 
   });
@@ -76,8 +76,10 @@ app.get('/api/aboutme', function(req, res) {
     res.json(aboutme);
   });
 });
+
+
 //get all species
-app.get('/api/swspecies', function(req, res) {
+app.get('/api/swspecies', function (req, res) {
   db.SwSpecies.find(function(err, species){
     if (err) {
       return console.log(err);
@@ -85,6 +87,7 @@ app.get('/api/swspecies', function(req, res) {
     res.json(species);
   });
 });
+
 
 //get one species
 app.get('/api/swspecies/:id', function(req, res) {
@@ -96,6 +99,7 @@ app.get('/api/swspecies/:id', function(req, res) {
   });
 });
 
+
 //create new species
 app.post('/api/swspecies', function(req, res){
   var species = new db.SwSpecies(req.body);
@@ -105,9 +109,15 @@ app.post('/api/swspecies', function(req, res){
 
 });
 
+
+
+
+
 //update species
-app.put('/api/wishlist/:id', function(req, res){
-  db.SwSpecies.findOne({_id: req.params.id}, function(err, species){
+app.put('/api/swspecies/:_id', function(req, res){
+  db.SwSpecies.findOneAndUpdate({_id: req.params._id}, function(err, species){
+    console.log(species);
+    console.log(species.name);
     species.name = req.body.name;
     species.classification = req.body.classification;
     species.designation = req.body.designation;
@@ -118,7 +128,8 @@ app.put('/api/wishlist/:id', function(req, res){
     species.average_lifespan = req.body.average_lifespan;
     species.language = req.body.language;
     species.save(function(err, updated_species){
-    res.json(updated_species);
+      console.log('updated');
+      res.json(updated_species);
     });
   });
 });

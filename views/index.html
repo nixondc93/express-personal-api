@@ -58,7 +58,7 @@
                     {{#each swspecies}}
                     <div class="col-md-3 species-objs form">
                         <hr>
-                        <form id="speciesUpdate" method="PUT" action="/api/swspecies">
+                        <form class="speciesUpdate" method="POST" action="/api/swspecies/{{_id}}" data-id="{{_id}}">
                         <p class="display"><b>Name: </b>{{name}}</p>
                         <p><input class="hidden update-form" type="text" name="name" value="{{name}}"></p>
                         <p class="display"><b>Classification: </b>{{classification}}</p>
@@ -78,12 +78,9 @@
                         <p class="display"><b>Language: </b>{{language}}</p>
                         <p><input class="hidden update-form" type="text" name="language" value="{{language}}"></p>
                         <button class="deleteBtn btn btn-danger" data-id={{_id}}>Delete</button>
-                        <input type='submit' class="saveBtn hidden btn" data-id={{_id}} value="Save"></button>
-                        <button type="button" class="updateBtn display btn btn-primary" data-id={{_id}}>Update</button>
+                        <input type="submit" class="saveBtn btn-success hidden btn" value="Save"></input>
+                        <button type="button" class="updateBtn display btn btn-primary">Update</button>
                         </form>
-
-
-
                     </div>
                     {{/each}}
                 </script>
@@ -96,9 +93,9 @@
                     <h2>Add a Species</h2>
                     <div class="row form">
 
-                        <p><b>Species Name: </b> <input class="clear" name="name" type="text" placeholder="Species Name" required></p>
+                        <p><b>Species Name: </b> <input class="clear" name="name" type="text" placeholder="Species Name" required ></p>
 
-                        <p><b>Classification: </b> <input class="clear" name="classification" type="text" placeholder="Classification"></p>
+                        <p><b>Classification: </b> <input class="clear" name="classification" type="text" placeholder="Classification" ></p>
 
                         <p><b>Designation: </b> <input class="clear" name="designation" type="text" placeholder="Designation" ></p>
 
